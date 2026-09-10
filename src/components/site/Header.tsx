@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { WHATSAPP_URL } from "@/lib/contact";
+import { LogoMark } from "@/components/Logo";
 
 const NAV = [
   { label: "Serviços", href: "#servicos" },
@@ -24,9 +25,12 @@ export function Header() {
         <a
           href="#inicio"
           aria-label="Roberto Deucher — início"
-          className="font-display shrink-0 text-sm font-extrabold uppercase tracking-[0.12em] text-ink"
+          className="flex shrink-0 items-center gap-2.5"
         >
-          Deucher
+          <LogoMark tone="navy" className="h-8 w-auto" />
+          <span className="hidden font-display text-sm font-extrabold uppercase tracking-[0.12em] text-ink sm:inline">
+            Roberto Deucher
+          </span>
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
