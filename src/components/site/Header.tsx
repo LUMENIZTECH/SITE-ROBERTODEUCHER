@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Logo } from "@/components/Logo";
+import { LogoMark } from "@/components/Logo";
 import { WHATSAPP_URL } from "@/lib/contact";
 
 const NAV = [
@@ -29,7 +29,7 @@ export function Header() {
     >
       <div className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-6 lg:px-12">
         <a href="#inicio" aria-label="Roberto Deucher — início">
-          <Logo />
+          <LogoMark className="h-12 w-12" />
         </a>
 
         <nav className="hidden items-center gap-9 lg:flex">
