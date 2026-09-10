@@ -1,33 +1,50 @@
-import { useState, type FormEvent } from "react";
+import { useState, useMemo } from "react";
+import { WHATSAPP_NUMBER } from "@/lib/contact";
 
 const FIELD =
   "w-full border-0 border-b border-border bg-transparent py-3 text-sm text-navy placeholder:text-muted-foreground focus:border-terracotta focus:outline-none transition-colors";
 
-export function ContactForm() {
-  const [sent, setSent] = useState(false);
+const TIPO_LABEL: Record<string, string> = {
+  residencial: "Residencial",
+  comercial: "Comercial",
+  reforma: "Reforma / ampliação",
+  outro: "Outro",
+};
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setSent(true);
-  }
+export function ContactForm() {
+  const [nome, setNome] = useState("");
+  const [tipo, setTipo] = useState("");
+  const [mensagem, setMensagem] = useState("");
+
+  const whatsappUrl = useMemo(() => {
+    const lines = [
+      "Olá! Vim pelo site da Roberto Deucher e gostaria de conversar sobre a execução da minha obra.",
+      "",
+      `Nome: ${nome.trim() || "(não informado)"}`,
+      `Tipo de projeto: ${TIPO_LABEL[tipo] || "(não informado)"}`,
+    ];
+    if (mensagem.trim()) {
+      lines.push("", `Mensagem: ${mensagem.trim()}`);
+    }
+    const text = lines.join("\n");
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+  }, [nome, tipo, mensagem]);
+
+  const canSend = nome.trim() && tipo && mensagem.trim();
 
   return (
-    <form onSubmit={onSubmit} className="space-y-8">
+    <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
       <div>
         <label htmlFor="nome" className="label-xs text-navy/60">
           Nome
         </label>
-        <input id="nome" name="nome" required placeholder="Seu nome completo" className={FIELD} />
-      </div>
-      <div>
-        <label htmlFor="whatsapp" className="label-xs text-navy/60">
-          WhatsApp
-        </label>
         <input
-          id="whatsapp"
-          name="whatsapp"
+          id="nome"
+          name="nome"
           required
-          placeholder="(00) 00000-0000"
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
+          placeholder="Seu nome completo"
           className={FIELD}
         />
       </div>
@@ -35,7 +52,14 @@ export function ContactForm() {
         <label htmlFor="tipo" className="label-xs text-navy/60">
           Tipo de projeto
         </label>
-        <select id="tipo" name="tipo" defaultValue="" className={FIELD} required>
+        <select
+          id="tipo"
+          name="tipo"
+          value={tipo}
+          onChange={(e) => setTipo(e.target.value)}
+          className={FIELD}
+          required
+        >
           <option value="" disabled>
             Selecione
           </option>
@@ -53,17 +77,27 @@ export function ContactForm() {
           id="mensagem"
           name="mensagem"
           rows={4}
+          required
+          value={mensagem}
+          onChange={(e) => setMensagem(e.target.value)}
           placeholder="Conte um pouco sobre a sua obra"
           className={`${FIELD} resize-none`}
         />
       </div>
 
-      <button
-        type="submit"
-        className="label-xs w-full border border-navy bg-navy px-8 py-4 text-offwhite transition-colors hover:border-terracotta hover:bg-terracotta sm:w-auto"
+      <a
+        href={canSend ? whatsappUrl : undefined}
+        target="_blank"
+        rel="noreferrer"
+        aria-disabled={!canSend}
+        className={`label-xs inline-flex w-full items-center justify-center border px-8 py-4 transition-colors sm:w-auto ${
+          canSend
+            ? "border-navy bg-navy text-offwhite hover:border-terracotta hover:bg-terracotta"
+            : "cursor-not-allowed border-navy/25 bg-transparent text-navy/40"
+        }`}
       >
-        {sent ? "Recebido — retornaremos em breve" : "Agendar reunião"}
-      </button>
+        Chamar no WhatsApp
+      </a>
     </form>
   );
 }
