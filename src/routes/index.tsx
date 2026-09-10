@@ -312,7 +312,7 @@ function Index() {
               </div>
 
               <div className="hidden lg:col-span-4 lg:col-start-9 lg:block">
-                <div className="sticky top-32 aspect-[3/4] w-full overflow-hidden border border-border bg-white">
+                <div className="relative sticky top-32 aspect-[3/4] w-full overflow-hidden border border-border bg-white">
                   {SERVICES.map((s, i) => (
                     <img
                       key={s.n}
