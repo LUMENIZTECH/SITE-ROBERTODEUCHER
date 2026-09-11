@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { WHATSAPP_NUMBER } from "@/lib/contact";
 
 const FIELD =
-  "w-full border-0 border-b border-border bg-transparent py-3 text-sm text-navy placeholder:text-muted-foreground focus:border-terracotta focus:outline-none transition-colors";
+  "w-full rounded-2xl border border-border bg-card px-4 py-3.5 text-sm text-ink placeholder:text-muted-foreground focus:border-ink focus:outline-none focus:ring-2 focus:ring-ink/10 transition-colors";
 
 const TIPO_LABEL: Record<string, string> = {
   residencial: "Residencial",
@@ -33,9 +33,9 @@ export function ContactForm() {
   const canSend = nome.trim() && tipo && mensagem.trim();
 
   return (
-    <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+    <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
       <div>
-        <label htmlFor="nome" className="label-xs text-navy/60">
+        <label htmlFor="nome" className="label-xs text-ink/55">
           Nome
         </label>
         <input
@@ -45,11 +45,11 @@ export function ContactForm() {
           value={nome}
           onChange={(e) => setNome(e.target.value)}
           placeholder="Seu nome completo"
-          className={FIELD}
+          className={`mt-2 ${FIELD}`}
         />
       </div>
       <div>
-        <label htmlFor="tipo" className="label-xs text-navy/60">
+        <label htmlFor="tipo" className="label-xs text-ink/55">
           Tipo de projeto
         </label>
         <select
@@ -57,7 +57,7 @@ export function ContactForm() {
           name="tipo"
           value={tipo}
           onChange={(e) => setTipo(e.target.value)}
-          className={FIELD}
+          className={`mt-2 ${FIELD}`}
           required
         >
           <option value="" disabled>
@@ -70,7 +70,7 @@ export function ContactForm() {
         </select>
       </div>
       <div>
-        <label htmlFor="mensagem" className="label-xs text-navy/60">
+        <label htmlFor="mensagem" className="label-xs text-ink/55">
           Mensagem
         </label>
         <textarea
@@ -81,7 +81,7 @@ export function ContactForm() {
           value={mensagem}
           onChange={(e) => setMensagem(e.target.value)}
           placeholder="Conte um pouco sobre a sua obra"
-          className={`${FIELD} resize-none`}
+          className={`mt-2 resize-none ${FIELD}`}
         />
       </div>
 
@@ -90,10 +90,10 @@ export function ContactForm() {
         target="_blank"
         rel="noreferrer"
         aria-disabled={!canSend}
-        className={`label-xs inline-flex w-full items-center justify-center border px-8 py-4 transition-colors sm:w-auto ${
+        className={`inline-flex w-full items-center justify-center rounded-full px-8 py-4 text-sm font-medium transition-colors sm:w-auto ${
           canSend
-            ? "border-navy bg-navy text-offwhite hover:border-terracotta hover:bg-terracotta"
-            : "cursor-not-allowed border-navy/25 bg-transparent text-navy/40"
+            ? "bg-ink text-primary-foreground hover:bg-terracotta"
+            : "cursor-not-allowed bg-ink/10 text-ink/40"
         }`}
       >
         Chamar no WhatsApp

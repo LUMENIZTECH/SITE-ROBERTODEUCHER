@@ -1,22 +1,41 @@
-type Props = { className?: string; tone?: "navy" | "light" };
+type MarkProps = { className?: string; tone?: "navy" | "light" };
 
-export function LogoMark({ className = "h-10 w-10", tone = "navy" }: Props) {
-  return <img src="/img/logo-mark.png" alt="" className={className} aria-hidden="true" />;
+export function LogoMark({ className = "h-10 w-10", tone = "navy" }: MarkProps) {
+  return (
+    <img
+      src={tone === "light" ? "/img/logo-mark-light.png" : "/img/logo-mark.png"}
+      alt=""
+      aria-hidden="true"
+      className={className}
+    />
+  );
 }
 
 export function Logo({
-  className = "h-16 w-16",
-  withBackground = false,
+  className = "h-10",
+  tone = "navy",
 }: {
   tone?: "navy" | "light";
   className?: string;
-  withBackground?: boolean;
 }) {
+  const textColor = tone === "light" ? "text-primary-foreground" : "text-ink";
   return (
-    <img
-      src={withBackground ? "/img/logo-white.png" : "/img/logo-transparent.png"}
-      alt="Roberto Deucher — mão de obras e construção civil"
-      className={className}
-    />
+    <span className="flex items-center gap-2.5">
+      <LogoMark tone={tone} className={className + " w-auto"} />
+      <span className="flex flex-col leading-none">
+        <span
+          className={`font-display text-sm font-extrabold uppercase tracking-[0.14em] ${textColor}`}
+        >
+          Roberto Deucher
+        </span>
+        <span
+          className={`mt-1 text-[10px] uppercase tracking-[0.18em] ${
+            tone === "light" ? "text-primary-foreground/50" : "text-ink/45"
+          }`}
+        >
+          Construção civil
+        </span>
+      </span>
+    </span>
   );
 }

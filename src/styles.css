@@ -5,10 +5,12 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 3px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 14px);
+  --radius-3xl: calc(var(--radius) + 26px);
   --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
   --color-background: var(--background);
@@ -30,49 +32,53 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-concrete: var(--concrete);
-  --color-navy: var(--navy);
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-stone: var(--stone);
   --color-terracotta: var(--terracotta);
-  --color-offwhite: var(--offwhite);
-  --shadow-header: var(--shadow-header);
+  --shadow-pill: var(--shadow-pill);
 }
 
 :root {
-  --radius: 0.25rem;
+  --radius: 1rem;
 
-  /* Brand */
-  --navy: oklch(0.323 0.055 262.9); /* #20314D */
-  --terracotta: oklch(0.503 0.093 43.2); /* #A6593B */
-  --offwhite: oklch(0.973 0.005 95); /* #F7F6F2 */
-  --concrete: oklch(0.883 0.002 106); /* #D9D9D6 */
+  /* Palette — EVASION-inspired: warm paper, near-black ink, one terracotta accent */
+  --paper: oklch(0.976 0.004 90); /* #F6F5F1 */
+  --ink: oklch(0.205 0.006 60); /* #1C1B19 */
+  --stone: oklch(0.55 0.007 60); /* muted gray text */
+  --terracotta: oklch(0.53 0.098 44); /* brand accent */
 
-  --background: var(--offwhite);
-  --foreground: var(--navy);
+  --background: var(--paper);
+  --foreground: var(--ink);
   --card: oklch(1 0 0);
-  --card-foreground: var(--navy);
+  --card-foreground: var(--ink);
   --popover: oklch(1 0 0);
-  --popover-foreground: var(--navy);
-  --primary: var(--navy);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: var(--concrete);
-  --secondary-foreground: var(--navy);
-  --muted: var(--concrete);
-  --muted-foreground: oklch(0.52 0.018 258);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: oklch(0.985 0.003 90);
+  --secondary: oklch(0.93 0.004 80);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.93 0.004 80);
+  --muted-foreground: var(--stone);
   --accent: var(--terracotta);
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.883 0.002 106);
-  --input: oklch(0.883 0.002 106);
-  --ring: var(--navy);
+  --border: oklch(0.9 0.004 80);
+  --input: oklch(0.9 0.004 80);
+  --ring: var(--ink);
 
-  --shadow-header: 0 1px 0 0 color-mix(in oklab, var(--navy) 8%, transparent),
-    0 6px 24px -18px color-mix(in oklab, var(--navy) 45%, transparent);
+  --shadow-pill: 0 2px 8px -4px color-mix(in oklab, var(--ink) 30%, transparent),
+    0 12px 40px -20px color-mix(in oklab, var(--ink) 40%, transparent);
 }
 
 @layer base {
   * {
     border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
@@ -87,42 +93,45 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    font-weight: 500;
-    letter-spacing: -0.02em;
+    font-weight: 700;
+    letter-spacing: -0.03em;
   }
 }
 
+/* Uppercase micro-label used across nav, kickers and tags */
 @utility label-xs {
   font-size: 0.6875rem;
   line-height: 1.2;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   font-weight: 500;
 }
 
 @utility rule-terracotta {
   display: block;
-  width: 3.5rem;
+  width: 3rem;
   height: 2px;
   background-color: var(--terracotta);
 }
 
+/* Giant EVASION-style wordmark */
+@utility wordmark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.82;
+  text-transform: uppercase;
+}
+
 @utility reveal {
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(22px);
   transition:
-    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @utility reveal-in {
   opacity: 1;
   transform: none;
-}
-
-@utility blueprint {
-  background-image:
-    linear-gradient(to right, color-mix(in oklab, var(--navy) 8%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in oklab, var(--navy) 8%, transparent) 1px, transparent 1px);
-  background-size: 48px 48px;
 }
