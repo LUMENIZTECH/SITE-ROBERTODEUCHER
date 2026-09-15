@@ -18,7 +18,7 @@ export function ContactForm() {
 
   const whatsappUrl = useMemo(() => {
     const lines = [
-      "Olá! Vim pelo site da Roberto Deucher e gostaria de conversar sobre a execução da minha obra.",
+      "Olá! Vim pelo site — RD CONSTRUÇÃO.",
       "",
       `Nome: ${nome.trim() || "(não informado)"}`,
       `Tipo de projeto: ${TIPO_LABEL[tipo] || "(não informado)"}`,
