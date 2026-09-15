@@ -359,7 +359,6 @@ function Index() {
                   </div>
                 </Reveal>
               </div>
-
             </div>
           </div>
         </section>
