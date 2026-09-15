@@ -113,7 +113,7 @@ function Index() {
               </p>
             </div>
             <div className="w-full overflow-hidden px-4 lg:px-6">
-              <h1 className="wordmark text-white text-[26vw] leading-[0.78] lg:text-[19vw]">
+              <h1 className="wordmark text-white text-[18.5vw] leading-[0.78] lg:text-[19vw]">
                 Deucher
               </h1>
             </div>
