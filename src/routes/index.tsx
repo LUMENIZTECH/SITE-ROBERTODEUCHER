@@ -3,7 +3,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ContactForm } from "@/components/site/ContactForm";
 import { Reveal } from "@/components/Reveal";
-import { WHATSAPP_URL } from "@/lib/contact";
+
 import heroImg from "@/assets/hero.jpg";
 import obraImg from "@/assets/obra.jpg";
 import larImg from "@/assets/lar.jpg";
@@ -313,25 +313,6 @@ function Index() {
                 </Reveal>
               </div>
 
-              <div className="lg:col-span-5 lg:col-start-8">
-                <Reveal delay={100}>
-                  <div className="rounded-3xl border border-border bg-card p-8 lg:p-10">
-                    <Kicker>Prefere falar agora?</Kicker>
-                    <p className="mt-6 text-2xl leading-snug">
-                      Atendimento direto, sem intermediários.
-                    </p>
-                    <span className="rule-terracotta mt-8" />
-                    <a
-                      href={WHATSAPP_URL}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-10 inline-flex w-full items-center justify-center rounded-full bg-ink px-8 py-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-terracotta"
-                    >
-                      Chamar no WhatsApp
-                    </a>
-                  </div>
-                </Reveal>
-              </div>
             </div>
           </div>
         </section>

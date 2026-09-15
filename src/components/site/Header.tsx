@@ -84,15 +84,6 @@ export function Header() {
                 {item.label}
               </a>
             ))}
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => setOpen(false)}
-              className="mt-1 rounded-full bg-ink px-4 py-3 text-center text-sm font-medium text-primary-foreground"
-            >
-              Falar no WhatsApp
-            </a>
           </nav>
         </div>
       )}
