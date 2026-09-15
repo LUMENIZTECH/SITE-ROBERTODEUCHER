@@ -57,15 +57,60 @@ const AUDIENCES = [
 ];
 
 const SERVICES = [
-  { cat: "Estrutura", name: "Fundação", desc: "Base executada com precisão técnica e controle de cada etapa.", img: fundacaoImg },
-  { cat: "Estrutura", name: "Estrutural", desc: "Estruturas seguras, alinhadas ao projeto e ao cronograma.", img: obraImg },
-  { cat: "Vedação", name: "Alvenaria", desc: "Paredes no esquadro, com prumo e nível conferidos.", img: alvenariaImg },
-  { cat: "Acabamento", name: "Argamassa de acabamento", desc: "Superfícies regulares, prontas para o revestimento.", img: cuidadoImg },
-  { cat: "Revestimento", name: "Cerâmica", desc: "Assentamento com paginação estudada e juntas uniformes.", img: revestimentoImg },
-  { cat: "Revestimento", name: "Mármore", desc: "Pedras naturais aplicadas com encaixe e polimento cuidadosos.", img: larImg },
-  { cat: "Acabamento", name: "Pintura", desc: "Preparo, cobertura e recortes com acabamento limpo.", img: pinturaImg },
-  { cat: "Instalações", name: "Elétrica", desc: "Instalações organizadas, seguras e conforme o projeto.", img: negocioImg },
-  { cat: "Entorno", name: "Paisagismo", desc: "O entorno tratado como parte da arquitetura.", img: heroImg },
+  {
+    cat: "Estrutura",
+    name: "Fundação",
+    desc: "Base executada com precisão técnica e controle de cada etapa.",
+    img: fundacaoImg,
+  },
+  {
+    cat: "Estrutura",
+    name: "Estrutural",
+    desc: "Estruturas seguras, alinhadas ao projeto e ao cronograma.",
+    img: obraImg,
+  },
+  {
+    cat: "Vedação",
+    name: "Alvenaria",
+    desc: "Paredes no esquadro, com prumo e nível conferidos.",
+    img: alvenariaImg,
+  },
+  {
+    cat: "Acabamento",
+    name: "Argamassa de acabamento",
+    desc: "Superfícies regulares, prontas para o revestimento.",
+    img: cuidadoImg,
+  },
+  {
+    cat: "Revestimento",
+    name: "Cerâmica",
+    desc: "Assentamento com paginação estudada e juntas uniformes.",
+    img: revestimentoImg,
+  },
+  {
+    cat: "Revestimento",
+    name: "Mármore",
+    desc: "Pedras naturais aplicadas com encaixe e polimento cuidadosos.",
+    img: larImg,
+  },
+  {
+    cat: "Acabamento",
+    name: "Pintura",
+    desc: "Preparo, cobertura e recortes com acabamento limpo.",
+    img: pinturaImg,
+  },
+  {
+    cat: "Instalações",
+    name: "Elétrica",
+    desc: "Instalações organizadas, seguras e conforme o projeto.",
+    img: negocioImg,
+  },
+  {
+    cat: "Entorno",
+    name: "Paisagismo",
+    desc: "O entorno tratado como parte da arquitetura.",
+    img: heroImg,
+  },
 ];
 
 const STEPS = [
@@ -107,13 +152,15 @@ function Index() {
           <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/5 to-ink/80" />
           <div className="relative z-10 flex min-h-[100svh] flex-col justify-end">
             <div className={`${SECTION} pb-4 pt-28 lg:pb-6`}>
-              <p className="label-xs text-white/70">Roberto Deucher — Mão de obra & construção civil</p>
+              <p className="label-xs text-white/70">
+                Roberto Deucher — Mão de obra & construção civil
+              </p>
               <p className="mt-5 max-w-lg text-lg leading-relaxed text-white/90 sm:text-xl">
                 Construímos os lugares onde você viverá as suas melhores histórias.
               </p>
             </div>
             <div className="w-full overflow-hidden px-4 lg:px-6">
-              <h1 className="wordmark text-white text-[18.5vw] leading-[0.78] lg:text-[19vw]">
+              <h1 className="wordmark text-white text-[18.5vw] leading-[0.78] lg:text-[17vw]">
                 Deucher
               </h1>
             </div>
