@@ -3,7 +3,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ContactForm } from "@/components/site/ContactForm";
 import { Reveal } from "@/components/Reveal";
-import { WHATSAPP_URL } from "@/lib/contact";
+
 import heroImg from "@/assets/hero.jpg";
 import obraImg from "@/assets/obra.jpg";
 import larImg from "@/assets/lar.jpg";
